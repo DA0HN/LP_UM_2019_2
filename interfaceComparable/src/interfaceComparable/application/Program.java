@@ -1,0 +1,35 @@
+package interfaceComparable.application;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class Program {
+
+	public static void main(String[] args) {
+		List<String> list = new ArrayList<>();
+		String path = "E:\\JavaWorkspace\\interfaceComparable\\in.txt";
+		
+		try (BufferedReader br = new BufferedReader( new FileReader(path) ) ){
+			String name = br.readLine();
+			
+			while( name != null ) {
+				list.add(name);
+				name = br.readLine();
+			}
+			
+			Collections.sort(list);
+			
+			for(String str : list) {
+				System.out.println(str);
+			}
+		}
+		catch(IOException e) {
+			System.out.println("Error: " + e.getMessage() );
+		}
+	}
+
+}
